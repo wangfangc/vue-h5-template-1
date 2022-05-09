@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
+// eslint-disable-next-line
 import { getToken, getCsrfToken } from '@/utils/auth'
 import store from '@/store'
 
@@ -16,7 +17,7 @@ const service: AxiosInstance = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   config => {
-    if (store.getters.getToken) {
+    if (store.state.user.token) {
       config.headers.Authorization = `Bearer ${getToken()}`
     }
     // config.headers['x-csrf-token'] = getCsrfToken()

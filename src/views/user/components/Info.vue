@@ -7,7 +7,7 @@
       </div>
       <div class="main__id">
         <span class="main__id__code">用户id：{{ userInfo.uid }}</span>
-        <span style="color:#fff">
+        <span style="color: #fff">
           <svg-icon icon-class="copy" :width="13" :height="13" />
         </span>
       </div>
@@ -20,13 +20,15 @@ import { computed, defineComponent } from 'vue'
 import SvgIcon from '@/components/SvgIcon'
 import { useStore } from 'vuex'
 
+import { GlobalProp } from '@/store'
+
 export default defineComponent({
   name: 'User',
   components: {
     SvgIcon
   },
   setup() {
-    const store = useStore()
+    const store = useStore<GlobalProp>()
     return {
       userInfo: computed(() => store.state.user.userInfo)
     }
